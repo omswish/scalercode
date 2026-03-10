@@ -1,0 +1,21 @@
+public class Solution {
+    public int solve(int[] A) {
+        int n = A.length;
+        int chunkCount = 0;
+        int maxSoFar = -1;
+
+        for (int i = 0; i < n; i++) {
+            // Track the maximum value seen in the current potential chunk
+            maxSoFar = Math.max(maxSoFar, A[i]);
+
+            // If the maximum value seen is equal to the current index,
+            // it means all elements from 0 to i are present in A[0...i].
+            // This forms a valid partition point.
+            if (maxSoFar == i) {
+                chunkCount++;
+            }
+        }
+
+        return chunkCount;
+    }
+}
