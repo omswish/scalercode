@@ -1,0 +1,31 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ * public int val;
+ * public ListNode next;
+ * public ListNode(int x) { val = x; next = null; }
+ * }
+ */
+public class Solution {
+    public int solve(ListNode A) {
+        // A list with 0 or 1 nodes is always non-decreasing
+        if (A == null || A.next == null) {
+            return 1;
+        }
+
+        ListNode current = A;
+
+        // Traverse until the second to last node
+        while (current.next != null) {
+            // Check if current value is greater than the next value
+            if (current.val > current.next.val) {
+                return 0; // Violation found
+            }
+            // Move to the next node
+            current = current.next;
+        }
+
+        // If we reached the end, the list is sorted
+        return 1;
+    }
+}
