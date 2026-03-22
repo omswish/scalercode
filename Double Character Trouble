@@ -1,0 +1,21 @@
+public class Solution {
+    public String solve(String A) {
+        // We use a StringBuilder as a stack for efficiency
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < A.length(); i++) {
+            char current = A.charAt(i);
+            int lastIdx = sb.length() - 1;
+
+            // If the current char matches the 'top' of our builder, remove the top
+            if (sb.length() > 0 && sb.charAt(lastIdx) == current) {
+                sb.deleteCharAt(lastIdx);
+            } else {
+                // Otherwise, add the current char to our 'stack'
+                sb.append(current);
+            }
+        }
+
+        return sb.toString();
+    }
+}
